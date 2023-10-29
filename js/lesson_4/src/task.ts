@@ -7,7 +7,9 @@
 type PersonType = {
     name:string;
     age:number | string;
+    isSuperHero?:boolean;
     occupation?: string;
+    
 };
 
 export const users: PersonType[] = [
@@ -19,6 +21,7 @@ export const users: PersonType[] = [
     {
         name: 'Ben Stiller',
         age: 57,
+        isSuperHero: true,
         occupation: 'Filmmaker',
     },
     {
