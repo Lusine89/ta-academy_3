@@ -9,7 +9,6 @@ type PersonType = {
     age:number | string;
     isSuperHero?:boolean;
     occupation?: string;
-    
 };
 
 export const users: PersonType[] = [
