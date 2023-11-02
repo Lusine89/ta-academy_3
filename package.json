@@ -1,0 +1,14 @@
+{
+  "name": "ta-academy",
+  "version": "1.0.0",
+  "description": "## Initial setup _____________________________________",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.37.1",
+    "@types/node": "^20.8.9"
+  }
+}

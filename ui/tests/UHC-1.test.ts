@@ -11,6 +11,11 @@ test.describe('UHC-2 (test ID)', () => {
     page = await browser.newPage();
 
     await page.goto(baseURL, { waitUntil: 'domcontentloaded' });
+
+   
+    const pageTitle = await page.title();
+    expect(pageTitle).toStrictEqual('UHC. United Healthcare.');
+
     await page.click('text=Create UHCGlasses.com Account');
 
     const createAccountButton = await page.locator('text=Create UHCGlasses.com Account');
@@ -27,6 +32,8 @@ test.describe('UHC-2 (test ID)', () => {
 
     await createAccountButton.click();
 
+    expect(await page.locator('text=Registration Successful').isVisible()).toBe(true);
+
     const closeWelcomePopupButton = await page.locator('text=Close');
     await closeWelcomePopupButton.click();
 
@@ -34,8 +41,9 @@ test.describe('UHC-2 (test ID)', () => {
     await myAccountDropdown.hover();
     await page.click('text=Sign out');
     
+    expect(await page.locator('text=Logged Out').isVisible()).toBe(true);
+
     await page.close();
     await browser.close();
   });
 });
-
