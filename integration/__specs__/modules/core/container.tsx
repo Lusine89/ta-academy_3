@@ -15,11 +15,12 @@ import { Mock } from '@Core/mock';
 const sagaMiddleware = createSagaMiddleware();
 
 export class Container {
+    protected element: Element;
     private page: RenderResult;
     private store: Store;
 
     // eslint-disable-next-line no-empty-function,@typescript-eslint/no-empty-function
-    public addDefaultMocks(): void {}
+    public addDefaultMocks(): void { }
 
     public debug(): void {
         debug();
@@ -45,5 +46,13 @@ export class Container {
 
     public getStore(): Store {
         return this.store;
+    }
+    public async doesFormExist(selector: string): Promise<boolean> {
+        try {
+            await this.page.findByTestId(selector);
+            return true;
+        } catch (error) {
+            return false;
+        }
     }
 }
