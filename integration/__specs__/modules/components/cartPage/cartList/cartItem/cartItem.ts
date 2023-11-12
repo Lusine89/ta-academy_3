@@ -5,6 +5,8 @@ export class CartItem extends Component {
         fullPrice: './/div[contains(@class, "fullprice")]',
         priceForOne: './/div[contains(@class, "price-for-one")]',
         addButton: './/button[text()="+"]',
+        deleteButton: './/button[text()="Delete"]', 
+        
     };
 
     public async getPriceForAll(): Promise<number> {
@@ -15,4 +17,9 @@ export class CartItem extends Component {
     public async addOne(): Promise<void> {
         await this.element.clickByXpath(this.selectors.addButton);
     }
+
+    public async delete(): Promise<void> {
+        await this.element.clickByXpath(this.selectors.deleteButton);
+    }
 }
+

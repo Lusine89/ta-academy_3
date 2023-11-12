@@ -1,14 +1,15 @@
-import { fireEvent } from '@testing-library/react';
+import { fireEvent} from '@testing-library/react';
 import { Container } from '@Core/container';
 import { CartList } from '@Components/cartPage/cartList/cartList';
 import { ModalAddItem } from '@Components/cartPage/ModalAddItem/ModalAddItem';
 
 export class CartPage extends Container {
     private selectors = {
-        title: 'h1',
-        cartList: './/div[@class="cart__list"]',
-        buttonAddCartItem: './/button[text()="Add Cart Item"]',
-        modalAddItem: './/div[@data-testid="modal-inside"]',
+    title: 'h1',
+    cartList: './/div[@class="cart__list"]',
+    buttonAddCartItem: './/button[text()="Add Cart Item"]',
+    modalAddItem: './/div[@data-testid="modal-inside"]', 
+    nameInput: './/input[@data-testid="input-name"]', 
     };
 
     public async fulfill(): Promise<void> {
@@ -31,6 +32,19 @@ export class CartPage extends Container {
 
         const [modal] = await document.waitForXpath(this.selectors.modalAddItem);
 
-        return new ModalAddItem(modal);
+        return new ModalAddItem(modal);}
+
+     public async doesFormExist(): Promise<boolean> {
+            try {
+                await this.element.waitForQuerySelector(this.selectors.nameInput);
+                return true;
+            } catch (error) {
+                return false;
+            }
+
     }
 }
+
+
+
+

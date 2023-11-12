@@ -1,4 +1,4 @@
-import { fireEvent, logDOM } from '@testing-library/react';
+import { fireEvent,waitFor, logDOM } from '@testing-library/react';
 import type { CustomFile } from '@Utils/customFile';
 
 export class Component {
@@ -40,4 +40,11 @@ export class Component {
     public inputImage(file: CustomFile): void {
         fireEvent.change(this.element, { target: { files: [file] } });
     }
+
+    public async inputAsync(text: string): Promise<void> {
+        fireEvent.change(this.element, { target: { value: text } });
+        await waitFor(() => this.element.getAttribute('value') === text);
+    }
+
+
 }

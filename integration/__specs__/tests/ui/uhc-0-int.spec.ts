@@ -15,7 +15,7 @@ describe('UHC-0-int', () => {
         cartPage.destroy();
     });
 
-    test('Test title', async () => {
+    test('Test title', async () =>{
         await cartPage.fulfill();
         const title = await cartPage.getHeaderTitle();
 
